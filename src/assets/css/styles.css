@@ -1,0 +1,697 @@
+.mines-game-ui{
+    display:grid;
+    text-align: center;
+    height: 100vh;
+    font-family: "proxima", sans-serif;
+}
+
+.Mines-top-bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.mines-balance-deposit{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding:3px;
+    max-width: 80px;
+    width: 100%;
+    font-weight:bold;
+    font-size: 18px;
+}
+
+.Mines-icons-style{
+    width: 24px;
+    height: 24px;
+}
+
+.deposit-btn{
+    padding: 2px;
+    width: 15px;
+    height: 15px;
+}
+
+.Mines-settings-dropdown {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 10;
+    top: 40px;
+    right: 0;
+}
+
+/*canvas{*/
+/*    width:100%;*/
+/*}*/
+
+.canvas-view {
+    position: relative;
+    background: rgb(40,62,75);
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.35);
+}
+
+
+.canvas-bet-area {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: 10px;
+    height: 100%;
+    align-items: start;
+}
+
+
+#minesCanvas {
+    height: 100%;
+    width: 100%;
+    grid-row: 1;
+    justify-self: center;
+
+}
+
+.mines-game-controls-bottom {
+    width:100%;
+    grid-row: 2; /* Place controls in the second row */
+}
+.mines-game-title{
+    padding:10px 0;
+}
+
+.Bet-Amount-controls{
+    display: flex;
+    flex-direction: column;
+    gap:7px;
+    padding:5px 10px;
+    height: 100%;
+
+}
+
+.bet-shortcuts{
+    display: flex;
+    flex-direction:row ;
+    justify-content: space-between;
+    gap:5px;
+    background: rgb(23, 44, 58);
+    padding:5px;
+    border-radius:4px;
+}
+
+.bet-shortcut-value{
+    background: rgb(40, 59, 72);
+    font-size:14px;
+    padding:5px;
+    width: 40px;
+    border-radius: 7px;
+    border: 2px solid rgb(49, 69, 82);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6); /* Dark shadow */
+}
+
+.bet-shortcut-value:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    border: 2px solid rgb(23, 179, 18);
+}
+
+.bet-area{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.title{
+    text-align: left;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.bet-amount-area{
+    display: flex;
+    flex-direction: row;
+
+    background: rgb(46, 71, 87);
+    padding:3px;
+}
+
+.bet-Amount{
+    font-size: 14px;
+    color: white;
+    text-align: left;
+    background: rgb(19, 37, 49);
+    padding: 10px;
+    width: 100%;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+    /*box-shadow: inset 5px 5px  20px rgb(0, 0, 0), 0 2px 6px rgba(0, 0, 0, 0.6); !* Dark shadow *!*/
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.bet-Amount:hover{
+    border:1px solid white;
+}
+
+.bet{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 30%;
+}
+
+.bet-half-double{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    gap: 2px;
+    background: #082f42;
+}
+
+.bet-half,.bet-double{
+    background: rgb(46, 71, 87);
+    font-size: 14px;
+    color: white;
+    text-align: center;
+    border-radius:2px;
+    font-weight: bold;
+    padding: 10px;
+    width: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.bet-double:hover,.bet-half:hover{
+    background: rgba(98, 122, 155, 0.8);
+}
+
+.bet-half.active,
+.bet-double.active {
+    background: rgb(70, 93, 126);
+    box-shadow: 0 2px 3px rgba(19, 12, 12, 0.3);
+}
+
+.selected{
+    background: rgb(36,59,72);
+    color: white;
+}
+
+
+.level-changes{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    margin-bottom: 10px;
+    padding:10px;
+}
+
+.level-changes-titles{
+    display: flex;
+    margin-bottom: 4px;
+}
+
+.Gems{
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.level-changes-controls{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    /*box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.6); !* Dark shadow *!*/
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.Mines-control{
+    text-align: left;
+    color:white;
+    font-size: 14px;
+    background: rgb(19, 37, 49);
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 2px;
+}
+
+.Mines-control:hover{
+    border:1px solid white;
+}
+.bet-number-deactivated{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    width: 100%;
+}
+
+.place-bet-buttons{
+    display: flex;
+    padding: 0 10px;
+}
+
+.start-game{
+    padding: 14px 0;
+    width: 100%;
+    background: rgb(0,231,1);
+    color: rgb(5,8,7);
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 550;
+    border-radius:4px;
+    }
+
+.checkout-btn{
+    background: rgba(0, 231, 1, 0.66);
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+input:focus {
+    outline: none;
+    border: none;
+}
+.start-game.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.start-game:hover{
+    background: rgb(1, 255, 2);
+}
+
+.Manual-auto{
+    display: flex;
+    /*width: 100%;*/
+    padding: 0 10px;
+    margin-bottom: 5px;
+
+}
+
+.Manual-auto-toggle{
+    display: flex;
+    padding: 5px;
+    background:rgb(15,33,46);
+    border-radius: 30px;
+    width: 100%;
+    gap:5px;
+}
+
+.manual-btn{
+    background: rgb(15,33,46);
+    padding: 10px 0;
+    width:100%;
+    font-size:14px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.manual-btn.active{
+    background: rgb(47,69,83);
+
+}
+.manual-btn:hover{
+    background: rgb(47,69,83);
+}
+
+.game-over-text{
+    color: white;
+    background: red;
+}
+
+.bet-history{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    gap: 10px;
+    background: rgb(23, 44, 58);
+    padding: 10px;
+    border-radius: 5px;
+
+}
+
+.bet-history-titles{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px;
+    font-size:14px;
+    font-weight:bold;
+    border-radius: 6px;
+}
+
+.bet-history-border{
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    width: 100%;
+    margin: 10px auto;
+}
+
+.bet-history-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius:6px;
+    padding: 5px 10px;
+    font-size:14px;
+
+}
+
+.result-popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgb(11, 50, 70);
+    color: #00ff00;
+    font-weight: bold;
+    padding:10px  10px;
+    border-radius: 10px;
+    border: 2px solid #00ff00;
+    width: 220px;
+    box-shadow:inset  2px 0 2px 2px rgba(0,0,0,0.5)
+}
+
+.canvas-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    z-index: 500;
+    background: rgba(0, 0, 0, 0);
+    /*backdrop-filter: blur(1px); !* Adjust the blur intensity *!*/
+}
+
+.top-results-overlay{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    color: #39f400;
+    font-size:25px;
+    margin-bottom:10px;
+    background: rgba(20, 20, 20, 0.6);
+    border-radius:6px;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.results-border{
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    width: 30%;
+    margin: 10px auto;
+}
+
+.diamond-result-img{
+    padding: 0 5px
+}
+
+.amount-won{
+    color: #39f400;
+    padding:10px;
+    font-size:18px;
+}
+
+.result-multiplier{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 16px;
+}
+
+.autobet-content{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.auto-bet-title{
+    font-size: 14px;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.57);
+}
+
+.on-loss-win-details{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.no-of-bets {
+    border: none;
+    background: rgb(19, 37, 49);
+    color: white;
+    text-align: left;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.no-of-bets:hover{
+    border:1px solid white;
+}
+.profits-loss {
+    border: none;
+    background: rgb(23, 44, 58);
+    color: white;
+    text-align: left;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    width:100%
+}
+
+.percent-value{
+    border: none;
+    background: rgb(31,51,64);
+    color: white;
+    text-align: left;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    width:100%
+
+}
+
+.on-win, .on-loss{
+    display: flex;
+    flex-direction: row;
+    gap:2px;
+    background: rgb(48, 73, 89);
+    padding: 2px;
+    border-radius: 5px;
+}
+
+.reset-increase{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size:12px;
+    font-weight: bold;
+    background: rgb(48, 73, 89);
+    padding:10px;
+    cursor:pointer;
+    border-radius: 5px;
+    width:30%;
+}
+
+.reset-increase:hover{
+    background-color: rgb(68, 104, 122);
+    color: white;
+}
+
+.reset-increase.active{
+    background: rgb(15,33,46);
+    color: rgba(255, 255, 255, 0.51);
+    border:none;
+}
+input{
+    border:none;
+}
+
+.percent-input {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(31,51,64);
+    width: 60.7%;
+    border-radius:4px;
+}
+
+.percent-input:hover{
+    border:1px solid white;
+}
+
+
+.stop-profit-loss{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(48, 73, 89);
+    width: 100%;
+    border-radius:4px;
+    padding: 2px;
+}
+
+.ksh-icon{
+    width: 25px;
+    height: 25px;
+}
+
+.bet-number{
+    width:100%;
+    padding: 2px;
+    border-radius: 4px;
+    background: rgb(48, 73, 89);
+}
+
+.deactivated{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width:100%;
+    padding: 0 2px;
+    border-radius: 4px;
+    /*background: rgb(23, 44, 58);*/
+}
+
+.stop-loss{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width:100%;
+    padding: 0 2px;
+    border-radius: 4px;
+    background: rgb(23, 44, 58);
+
+}
+
+.stop-loss:hover{
+    border:1px solid white;
+}
+.percent-symbol {
+    font-size: 14px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.59);
+    padding: 0 5px;
+}
+
+
+@media (max-width: 400px){
+    .result-popup {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+    }
+
+    .canvas-overlay {
+        position: absolute;
+        height: 40%;
+        z-index: 500;
+        background: rgba(0, 0, 0, 0);
+        backdrop-filter: blur(1px); /* Adjust the blur intensity */
+    }
+}
+
+@media(min-width:500px) and (max-width: 769px){
+
+    .canvas-bet-area{
+        padding: 10px;
+    }
+
+    .result-popup {
+        position: absolute;
+        top: 70%;
+        left: 50%;
+    }
+}
+
+@media (max-width: 1050px)  and (min-width:800px){
+
+    .mines-game-controls-bottom{
+        border:1px solid rgb(47,69,83);
+        background: rgb(40,62,75);
+        /*width: 100%;*/
+    }
+    /*i want to position canvas on the right */
+    #minesCanvas {
+        height: 100%;
+        width: 100%;
+
+
+    }
+
+    /*.canvas-bet-area{*/
+    /*    display:flex;*/
+    /*    gap: 20px;*/
+    /*    padding: 10px;*/
+    /*}*/
+    .canvas-view{
+        width:100%;
+        display:flex;
+        flex-direction:column;
+        place-items: center;
+
+    }
+
+    .result-popup {
+        position: absolute;
+        top: 76%;
+        left: 50%;
+    }
+
+}
+
+@media (max-width: 3000px)  and (min-width: 1100px){
+
+    .mines-game-controls-bottom{
+        width: 100%;
+
+        border:1px solid rgb(47,69,83);
+            /*background: rgb(40,62,75);*/
+            /*width: 100%;*/
+        }
+    /*i want to position canvas on the right */
+    #minesCanvas {
+        height: 100%;
+        width: 100%;
+        grid-row: 1;
+        justify-self: center;
+
+    }
+
+    .canvas-bet-area{
+        display:flex;
+        gap: 20px;
+        padding: 10px;
+        /*width: 100%;*/
+
+    }
+    .canvas-view{
+        width:100%;
+        display:flex;
+        flex-direction:column;
+        place-items: center;
+
+    }
+    .result-popup {
+        position: absolute;
+        top: 76%;
+        left: 62%;
+    }
+
+}
